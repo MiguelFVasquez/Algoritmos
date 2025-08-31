@@ -1,0 +1,68 @@
+# =======================
+# Python
+# =======================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.egg
+*.egg-info/
+.eggs/
+dist/
+build/
+develop-eggs/
+.installed.cfg
+*.manifest
+*.spec
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.venv*/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# =======================
+# Java
+# =======================
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# IDEs (IntelliJ, Eclipse, NetBeans, VSCode, etc.)
+*.iml
+.idea/
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+nbproject/
+.vscode/
+
+# =======================
+# OS / Misc
+# =======================
+.DS_Store
+Thumbs.db
