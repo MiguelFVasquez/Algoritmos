@@ -1,29 +1,51 @@
+package Corte2;
 public class PD {
     public static void main(String[] args) {
 
-        int n=40;
+        int n=5;
+        int k=5;
         int resultados[] = new int[n+1];
-        int coeficientes[][] = new int[n+1][n+1];
         //System.out.println("Sumatoria con memorización: "+sumatoriaMemo(5, resultados));}
         //System.out.println("Sumatoria con tabulación: "+sumatoriaTabu(5, resultados));
         //System.out.println("Sumatoria de 5: "+sumatoria(5));
 
 
-        long startTime= System.nanoTime();
-        System.out.println("Sucesión de Lucas recursivo: "+sucesionLucas(n));
-        long endTime= System.nanoTime();
-        System.out.println("Tiempo de ejecución Lucas recursivo: "+(endTime-startTime) / 1_000_000.0 + " ms");
+        //long startTime= System.nanoTime();
+        //System.out.println("Sucesión de Lucas recursivo: "+ sucesionLucas(n));
+        //long endTime= System.nanoTime();
+        //System.out.println("Tiempo de ejecución Lucas recursivo: "+(endTime-startTime) / 1_000_000.0 + " ms");
 
-        long startTimeM= System.nanoTime();
-        System.out.println("Sucesión de Lucas con memorización: "+sucesionLucasMemo(n, resultados));
-        long endTimeM= System.nanoTime();
-        System.out.println("Tiempo de ejecución Lucas con memorización: "+(endTimeM-startTimeM) / 1_000_000.0 + " ms");
+        //long startTimeM= System.nanoTime();
+        //System.out.println("Sucesión de Lucas con memorización: "+ sucesionLucasMemo(n, resultados));
+        //long endTimeM= System.nanoTime();
+        //System.out.println("Tiempo de ejecución Lucas con memorización: "+(endTimeM-startTimeM) / 1_000_000.0 + " ms");
 
 
-        long startTimeTab= System.nanoTime();
-        System.out.println("Sucesión de Lucas con tabulación: "+ sucesionLucasTabu(n, resultados));
-        long endTimeTab= System.nanoTime();
-        System.out.println("Tiempo de ejecución Lucas con tabulación: "+(endTimeTab-startTimeTab) / 1_000_000.0 + " ms");
+        //long startTimeTab= System.nanoTime();
+        //System.out.println("Sucesión de Lucas con tabulación: "+ sucesionLucasTabu(n, resultados));
+        //long endTimeTab= System.nanoTime();
+        //System.out.println("Tiempo de ejecución Lucas con tabulación: "+(endTimeTab-startTimeTab) / 1_000_000.0 + " ms");
+
+        int coeficientes[][] = llenarMatrizCoeficientesEjercicio(n, k);
+        System.out.println("Matriz generada con coeficientes binomiales (ejercicio 1):");
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= k; j++) {
+                System.out.print(coeficientes[i][j] + "\t");
+            }
+            System.out.println();
+        }
+        System.out.println("--------------------------------");
+        int coeficiente2[][] = llenarMatrizCoeficientes(n, k);
+        System.out.println("Matriz generada con coeficientes binomiales (ejercicio 2):");
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= k; j++) {
+                System.out.print(coeficiente2[i][j] + "\t");
+            }
+            System.out.println();
+        }
+
+    
+
 
     }
 
@@ -146,6 +168,7 @@ public class PD {
 //----------------------------------------Coeficiente binomiales------------------------
 
     public static int coeficienteBinomial(int n, int k){
+
         int [][] coeficientes = new int[n+1][k+1];
         for(int i= 0; i<=n;i++){
             for(int j=0; j<=k;j++){
@@ -160,7 +183,12 @@ public class PD {
         return coeficientes[n][k];
     }
 
-
+    /**
+     * 
+     * @param n
+     * @param k
+     * @return
+     */
     public static int coeficienteBinomialTabu(int n, int k){
         int [] coeficientes= new int[k+1];
         for(int i=1; i<=n;i++){
@@ -170,5 +198,56 @@ public class PD {
         }
         return coeficientes[k];
     }
+
+    //------------------------EJERCICIO coeficientes binomiales-------------------------
+    
+
+    /**
+     * Si k=0 o K=n --> 1
+     * De lo contrario --> c[i][j] = c[i][j-1]+c[i-1][j]
+     * @param n
+     * @param k
+     * @return
+     */
+    public static int[][] llenarMatrizCoeficientesEjercicio(int n, int k){
+        int [][] coeficientes = new int[n+1][k+1];
+        for(int i=0; i<=n;i++){
+            for(int j=0; j<= Math.min(i,k);j++){
+                if (j==0 || j==i) {
+                    coeficientes[i][j]=2; 
+                }else{
+                    coeficientes[i][j]= coeficientes[i][j-1]+coeficientes[i-1][j];
+                }
+            }
+        }
+        return coeficientes;
+    }
+
+    //------------Ejercicio 2---------------------------
+    /**
+     * Si k=0 o k=n --> 4
+     * De lo contrario --> c[i][j] = c[i][j-1]+c[i-1][j]
+     * @param n
+     * @param k
+     * @return
+     */
+    public static int[][] llenarMatrizCoeficientes(int n, int k) {
+        int[][] coeficientes = new int[n + 1][k + 1];
+    
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= Math.min(i, k); j++) {
+                if (j == 0 || j == i) {
+                    coeficientes[i][j] = 4; // Caso base
+                } else {
+                    coeficientes[i][j] = coeficientes[i][j - 1] + coeficientes[i - 1][j];
+                }
+            }
+        }
+    
+        return coeficientes;
+    }
+  
+
+    
 }   
 
