@@ -4,7 +4,7 @@ public class PD {
 
         int n=5;
         int k=5;
-        int resultados[] = new int[n+1];
+        //int resultados[] = new int[n+1];
         //System.out.println("Sumatoria con memorización: "+sumatoriaMemo(5, resultados));}
         //System.out.println("Sumatoria con tabulación: "+sumatoriaTabu(5, resultados));
         //System.out.println("Sumatoria de 5: "+sumatoria(5));
